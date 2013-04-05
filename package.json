@@ -3,13 +3,18 @@
   "version": "0.0.1",
   "description": "Welds images for Titanium SDK projects",
   "main": "index.js",
+  "bin": {
+    "welder": "./bin/welder"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": "",
   "dependencies": {
+    "mkdirp": "0.3.x",
     "canvas": "1.x",
-    "underscore": "1.4.x"
+    "underscore": "1.4.x",
+    "commander": "0.6.x"
   },
   "devDependencies": {},
   "keywords": [
