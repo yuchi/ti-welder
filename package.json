@@ -1,0 +1,22 @@
+{
+  "name": "ti-welder",
+  "version": "0.0.1",
+  "description": "Welds images for Titanium SDK projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "dependencies": {
+    "canvas": "1.x",
+    "underscore": "1.4.x"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "titanium",
+    "images",
+    "canvas"
+  ],
+  "author": "Pier Paolo Ramon",
+  "license": "MIT"
+}
