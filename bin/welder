@@ -1,0 +1,66 @@
+#!/usr/bin/env node
+
+var path = require('path');
+var fs = require('fs');
+var program = require('commander')
+var _ = require('underscore');
+
+var pkg = require('../package.json');
+
+var Welder = require('../index');
+
+program
+	.version(pkg.version)
+	.parse(process.argv);
+
+program.args.forEach(function (script) {
+	fs.stat(script, function (err, stat) {
+		if (err) throw err;
+		if (stat.isFile()) launchScript(script);
+	});
+});
+
+function launchScript(s) {
+
+	var script = path.resolve('' + s);
+	var directory = path.dirname(script);
+
+	function define(config, builder, publisher) {
+
+		if (_.isFunction(config)) {
+			publisher = builder;
+			builder = config;
+			config = {};
+		}
+
+		config.basepath = directory;
+		config.builder = builder;
+		config.publisher = publisher;
+
+		return new Welder.Context(config);
+
+	}
+
+	var definitions = [];
+
+	global.define = function () {
+		definitions.push(define.apply(this, arguments));
+	};
+
+	global.rgb = function (r, g, b) {
+		return 'rgb(' + [ Math.round(r), Math.round(g), Math.round(b)].join(',') + ')';
+	};
+
+	global.rgba = function (r, g, b, a) {
+		return 'rgba(' + [ Math.round(r), Math.round(g), Math.round(b), a].join(',') + ')';
+	};
+
+	// Attention here!
+
+	require(script);
+
+	_.invoke(definitions, 'run', function (err) {
+		if (err) throw err;
+	});
+
+}
