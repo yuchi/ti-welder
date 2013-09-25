@@ -1,6 +1,6 @@
 {
   "name": "ti-welder",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Welds images for Titanium SDK projects",
   "main": "index.js",
   "bin": {
