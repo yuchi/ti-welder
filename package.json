@@ -9,7 +9,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/yuchi/ti-welder"
+  },
   "dependencies": {
     "mkdirp": "0.3.x",
     "canvas": "1.x",
@@ -23,5 +26,8 @@
     "canvas"
   ],
   "author": "Pier Paolo Ramon",
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yuchi/ti-welder/issues"
+  }
 }
