@@ -60,7 +60,9 @@ function launchScript(s) {
 	require(script);
 
 	_.invoke(definitions, 'run', function (err) {
-		if (err) throw err;
+		if (err) {
+			console.error(err);
+			throw err;
+		}
 	});
-
 }
